@@ -1,1 +1,60 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: 2.5rem 0;
+  width: 18vw;
+  background-color: #00aeef;
+  color: #fff;
+}
 
+.logo {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.link {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.25rem 0;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
+
+.link:hover {
+  font-weight: 500;
+}
+
+.hoverUnderline {
+  display: inline-block;
+  position: relative;
+  color: #fff;
+}
+
+.hoverUnderline::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ffff;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hoverUnderline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
