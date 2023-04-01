@@ -16,3 +16,14 @@
   color: #00aeef;
   outline: 2px solid #00aeef;
 }
+
+.active {
+  background-color: #ff6969;
+  color: white;
+}
+
+.active:hover {
+  background-color: #ffff;
+  color: #ff6969;
+  outline: 2px solid #ff6969;
+}
