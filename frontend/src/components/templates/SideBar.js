@@ -7,6 +7,11 @@ import styles from "./SideBar.module.css";
 export default function SideBar() {
   const router = useRouter();
 
+  const logOut = () => {
+    localStorage.removeItem("token");
+    router.push("/login");
+  };
+
   return (
     <div className={styles.sidebar}>
       <div className={styles.logo}>Net Sentinel</div>
@@ -30,7 +35,7 @@ export default function SideBar() {
           </div>
         ))}
       </div>
-      <a className={styles.link} style={{ cursor: "pointer" }}>
+      <a className={styles.link} style={{ cursor: "pointer" }} onClick={logOut}>
         {" "}
         <img src="/assets/logout.svg" alt="icon" className={styles.icon} />
         Log out
