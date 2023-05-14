@@ -35,11 +35,25 @@ export default function SideBar() {
           </div>
         ))}
       </div>
-      <a className={styles.link} style={{ cursor: "pointer" }} onClick={logOut}>
-        {" "}
-        <img src="/assets/logout.svg" alt="icon" className={styles.icon} />
-        Log out
-      </a>
+      <div>
+        <a
+          className={styles.link}
+          style={{ cursor: "pointer" }}
+          onClick={() => router.push("/setting")}
+        >
+          <img src="/assets/setting.svg" alt="icon" className={styles.icon} />
+          Setting
+        </a>
+        <a
+          className={styles.link}
+          style={{ cursor: "pointer" }}
+          onClick={logOut}
+        >
+          {" "}
+          <img src="/assets/logout.svg" alt="icon" className={styles.icon} />
+          Keluar
+        </a>
+      </div>
     </div>
   );
 }
