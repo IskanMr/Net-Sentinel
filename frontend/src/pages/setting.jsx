@@ -3,7 +3,6 @@ import DefaultLayout from "../layouts/DefaultLayout";
 import Button from "../components/utils/Button";
 
 import Styles from "../styles/pages/setting.module.css";
-import { ST } from "next/dist/shared/lib/utils";
 
 export default function Setting() {
   return (
