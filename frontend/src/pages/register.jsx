@@ -6,14 +6,13 @@ import Styles from "../styles/pages/login.module.css";
 
 export default function Login() {
   const [passwordShown, setPasswordShown] = useState(false);
+  const [passwordShown2, setPasswordShown2] = useState(false);
 
   const togglePassword = () => {
     setPasswordShown(passwordShown ? false : true);
   };
-
-  const login = () => {
-    localStorage.setItem("token", "true");
-    window.location.replace("/");
+  const togglePassword2 = () => {
+    setPasswordShown2(passwordShown2 ? false : true);
   };
 
   useEffect(() => {
@@ -28,7 +27,7 @@ export default function Login() {
   return (
     <div className={Styles.container}>
       <div className={Styles.card}>
-        <h1 className={Styles.title}>Login</h1>
+        <h1 className={Styles.title}>Register</h1>
         <form action={login} className={Styles.form} method="post">
           <div className={Styles.inputGroup}>
             <label htmlFor="email">Email</label>
@@ -48,17 +47,30 @@ export default function Login() {
                 id="password"
                 className={Styles.input}
               />
-              <a onClick={togglePassword} className={Styles.checkPass}>
+              <a onClick={togglePassword} className={Styles.checkPass2}>
                 <input type="checkbox" checked={passwordShown} />
                 <>Show Password</>
               </a>
             </div>
           </div>
-          <Button style={{ width: "100%" }} onClick={login}>
-            Login
-          </Button>
+          <div className={Styles.inputGroup}>
+            <label htmlFor="password2">Confirm Password</label>
+            <div className={Styles.passInput}>
+              <input
+                type={passwordShown2 ? "text" : "password"}
+                name="password2"
+                id="password2"
+                className={Styles.input}
+              />
+              <a onClick={togglePassword2} className={Styles.checkPass}>
+                <input type="checkbox" checked={passwordShown2} />
+                <>Show Password</>
+              </a>
+            </div>
+          </div>
+          <Button style={{ width: "100%" }}>Register</Button>
           <div className={Styles.link}>
-            Don't have an account? <a href="/register">Register</a>
+            Already have an account? <a href="/login">Login</a>
           </div>
         </form>
       </div>

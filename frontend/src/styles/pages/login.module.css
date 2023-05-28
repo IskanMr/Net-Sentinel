@@ -14,8 +14,6 @@
   justify-content: center;
   align-items: center;
   width: 360px;
-  height: 100%;
-  max-height: 400px;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
@@ -73,4 +71,35 @@
   font-size: small;
   font-weight: normal;
   margin-bottom: 16px;
+}
+
+.checkPass2 {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+  font-size: small;
+  font-weight: normal;
+}
+
+.link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: small;
+  font-weight: normal;
+  margin-top: 16px;
+}
+
+.link a {
+  cursor: pointer;
+  color: #00aeef;
+  margin-left: 4px;
+}
+
+.link a:hover {
+  cursor: pointer;
+  color: #027199;
 }
