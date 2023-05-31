@@ -24,11 +24,13 @@ export default function Login() {
     }
   });
 
+  const register = async (e) => {};
+
   return (
     <div className={Styles.container}>
       <div className={Styles.card}>
         <h1 className={Styles.title}>Register</h1>
-        <form action={login} className={Styles.form} method="post">
+        <form action={register} className={Styles.form} method="post">
           <div className={Styles.inputGroup}>
             <label htmlFor="email">Email</label>
             <input

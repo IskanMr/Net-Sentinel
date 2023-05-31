@@ -39,14 +39,6 @@ export default function SideBar() {
         <a
           className={styles.link}
           style={{ cursor: "pointer" }}
-          onClick={() => router.push("/setting")}
-        >
-          <img src="/assets/setting.svg" alt="icon" className={styles.icon} />
-          Setting
-        </a>
-        <a
-          className={styles.link}
-          style={{ cursor: "pointer" }}
           onClick={logOut}
         >
           {" "}
