@@ -8,9 +8,9 @@ import uvicorn
 app = FastAPI()
 security = HTTPBasic()
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-client = MongoClient("mongodb+srv://ryankusnadi:<password>@senprologinapi.1eqaarl.mongodb.net/?retryWrites=true&w=majority")
+client = MongoClient("mongodb+srv://ryankusnadi:Temporary999@senprologinapi.1eqaarl.mongodb.net/?retryWrites=true&w=majority")
 db = client["auth"]
-users = db["users"]
+users = db.users
 
 
 def get_password_hash(password):
@@ -30,14 +30,14 @@ def register(username: str, password: str):
 
 
 @app.post("/login")
-def login(credentials: HTTPBasicCredentials = Depends(security)):
-    user = users.find_one({"username": credentials.username})
-    if user is None or not verify_password(credentials.password, user["password"]):
+def login(username: str, password: str):
+    user = users.find_one({"username": username})
+    if user is None or not verify_password(password, user["password"]):
         raise HTTPException(status_code=401, detail="Invalid username or password")
 
     # Set session cookie
     response = JSONResponse({"message": "Login successful."})
-    response.set_cookie(key="session", value=credentials.username)
+    response.set_cookie(key="session", value=username)
     return response
 
 
@@ -56,6 +56,7 @@ def protected_route(session: str = Depends(security)):
 
     raise HTTPException(status_code=401, detail="You need to log in to access this route.")
 
-
+"""
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=8000)
+"""
