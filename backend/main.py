@@ -56,8 +56,5 @@ def protected_route(session: str = Depends(security)):
 
     raise HTTPException(status_code=401, detail="You need to log in to access this route.")
 
-"""
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000)
-"""
-#test
+    uvicorn.run(app, host="0.0.0.0", port=8000)
