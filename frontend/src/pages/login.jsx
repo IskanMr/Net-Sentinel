@@ -1,19 +1,54 @@
 import { useState, useEffect } from "react";
 
+import axios from "axios";
+
 import Button from "../components/utils/Button";
 
 import Styles from "../styles/pages/login.module.css";
 
 export default function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
 
   const togglePassword = () => {
     setPasswordShown(passwordShown ? false : true);
   };
 
-  const login = () => {
-    localStorage.setItem("token", "true");
-    window.location.replace("/");
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const url =
+      "http://127.0.0.1:8000/login?username=" +
+      username +
+      "&password=" +
+      password;
+
+    try {
+      const response = await axios.post(url);
+
+      if (response.status === 200) {
+        // Login successful
+        // Do something with the response data
+        localStorage.setItem("token", "true");
+        window.location.replace("/");
+        console.log("Login successful");
+      } else {
+        // Login failed
+        // Do something with the error
+        window.alert("Login failed");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   useEffect(() => {
@@ -29,14 +64,16 @@ export default function Login() {
     <div className={Styles.container}>
       <div className={Styles.card}>
         <h1 className={Styles.title}>Login</h1>
-        <form action={login} className={Styles.form} method="post">
+        <form onSubmit={handleSubmit} className={Styles.form}>
           <div className={Styles.inputGroup}>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="username">Username</label>
             <input
-              type="email"
-              name="email"
-              id="email"
+              type="username"
+              name="username"
+              id="username"
               className={Styles.input}
+              value={username}
+              onChange={handleUsernameChange}
             />
           </div>
           <div className={Styles.inputGroup}>
@@ -47,6 +84,8 @@ export default function Login() {
                 name="password"
                 id="password"
                 className={Styles.input}
+                value={password}
+                onChange={handlePasswordChange}
               />
               <a onClick={togglePassword} className={Styles.checkPass}>
                 <input type="checkbox" checked={passwordShown} />
@@ -54,7 +93,7 @@ export default function Login() {
               </a>
             </div>
           </div>
-          <Button style={{ width: "100%" }} onClick={login}>
+          <Button style={{ width: "100%" }} type="submit">
             Login
           </Button>
           <div className={Styles.link}>
