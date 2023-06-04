@@ -47,7 +47,7 @@ export default function Login() {
         window.alert("Login failed");
       }
     } catch (error) {
-      console.error("Error:", error);
+      window.alert("Login failed");
     }
   };
 
@@ -74,6 +74,7 @@ export default function Login() {
               className={Styles.input}
               value={username}
               onChange={handleUsernameChange}
+              required
             />
           </div>
           <div className={Styles.inputGroup}>
@@ -86,6 +87,7 @@ export default function Login() {
                 className={Styles.input}
                 value={password}
                 onChange={handlePasswordChange}
+                required
               />
               <a onClick={togglePassword} className={Styles.checkPass}>
                 <input type="checkbox" checked={passwordShown} />
