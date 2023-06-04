@@ -16,7 +16,7 @@ users = db.users
 # Enable CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://netsenti-iskanmr.vercel.app"],
+    allow_origins=["https://netsenti-iskanmr.vercel.app","https://net-sentinel.vercel.app/"],
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["*"],
