@@ -50,8 +50,7 @@ export default function Login() {
       if (response.status === 200) {
         // Login successful
         // Do something with the response data
-        localStorage.setItem("token", "true");
-        window.location.replace("/");
+        window.location.replace("/login");
         console.log("Register successful");
       } else {
         // Login failed
