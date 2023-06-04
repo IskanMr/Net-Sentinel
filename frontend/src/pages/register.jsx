@@ -39,7 +39,7 @@ export default function Login() {
     }
 
     const url =
-      "http://127.0.0.1:8000/register?username=" +
+      "https://net-sentinel-api.vercel.app/register?username=" +
       username +
       "&password=" +
       password;

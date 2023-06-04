@@ -27,7 +27,7 @@ export default function Login() {
     event.preventDefault();
 
     const url =
-      "http://127.0.0.1:8000/login?username=" +
+      "https://net-sentinel-api.vercel.app/login?username=" +
       username +
       "&password=" +
       password;
