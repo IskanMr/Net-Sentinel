@@ -1,2 +1,5 @@
 fastapi
+fastapi-socketio
+passlib
+pymongo
 uvicorn
