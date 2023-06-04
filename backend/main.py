@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 from passlib.context import CryptContext
 from pymongo import MongoClient
 import uvicorn
@@ -11,6 +12,15 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 client = MongoClient("mongodb+srv://ryankusnadi:Temporary999@senprologinapi.1eqaarl.mongodb.net/?retryWrites=true&w=majority")
 db = client["auth"]
 users = db.users
+
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://netsenti-iskanmr.vercel.app"],
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_headers=["*"],
+)
 
 
 def get_password_hash(password):
